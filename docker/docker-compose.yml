@@ -1,0 +1,101 @@
+services:
+
+  bitcoin-node-1:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: bitcoin-node-1
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -bind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=10
+    - -listen=1
+    - -dns=0
+    - -rpcport=18443
+    - -port=18444
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18443:18443"
+    - "18444:18444"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+  bitcoin-node-2:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: bitcoin-node-2
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -bind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=10
+    - -listen=1
+    - -dns=0
+    - -rpcport=18443
+    - -port=18444
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18445:18443"
+    - "18446:18444"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+  bitcoin-node-3:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: bitcoin-node-3
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -bind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=10
+    - -listen=1
+    - -dns=0
+    - -rpcport=18443
+    - -port=18444
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18447:18443"
+    - "18448:18444"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+
+networks:
+  bitcoin-net:
+    driver: bridge
+    attachable: true
+configs:
+  bitcoin_conf:
+    file: ./bitcoin_conf.conf
+

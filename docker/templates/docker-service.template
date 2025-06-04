@@ -1,0 +1,16 @@
+{SERVICENAME}:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: {NODENAME}
+    environment: 
+      RPC_USER: {RPCUSER}
+      RPC_PASS: {RPCPASSWORD}
+    command:
+{COMMANDS}
+    ports:
+    - "{RPCPORT}:18443"
+    - "{P2PPORT}:18444"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf

@@ -1,0 +1,11 @@
+services:
+
+{SERVICES}
+networks:
+  bitcoin-net:
+    driver: bridge
+    attachable: true
+configs:
+  bitcoin_conf:
+    file: ./bitcoin_conf.conf
+

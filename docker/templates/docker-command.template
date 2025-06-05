@@ -1,6 +1,7 @@
     - -regtest
     - -printtoconsole
     - -server=1
+    - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser={RPCUSER}
@@ -8,7 +9,6 @@
     - -fallbackfee=0.00001
     - -maxconnections={MAXCONNECTIONS}
     - -listen=1
-    - -dns=0
     - -rpcport={RPCPORT}
     - -port={P2PPORT}
 {ADDNODE}

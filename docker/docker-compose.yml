@@ -1,8 +1,8 @@
 services:
 
-  bitcoin-node-1:
+  node_1:
     image: ruimarinho/bitcoin-core:24.0.1
-    container_name: bitcoin-node-1
+    container_name: node_1
     environment: 
       RPC_USER: user
       RPC_PASS: password
@@ -10,17 +10,17 @@ services:
     - -regtest
     - -printtoconsole
     - -server=1
+    - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
-    - -bind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=10
+    - -maxconnections=30
     - -listen=1
-    - -dns=0
     - -rpcport=18443
     - -port=18444
+    - -addnode=node_3:18448 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18443:18443"
@@ -30,9 +30,9 @@ services:
     configs:
     - source: bitcoin_conf
       target: /run/configs/bitcoin_conf
-  bitcoin-node-2:
+  node_2:
     image: ruimarinho/bitcoin-core:24.0.1
-    container_name: bitcoin-node-2
+    container_name: node_2
     environment: 
       RPC_USER: user
       RPC_PASS: password
@@ -40,29 +40,30 @@ services:
     - -regtest
     - -printtoconsole
     - -server=1
+    - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
-    - -bind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=10
+    - -maxconnections=30
     - -listen=1
-    - -dns=0
-    - -rpcport=18443
-    - -port=18444
+    - -rpcport=18445
+    - -port=18446
+    - -addnode=node_1:18444 
+    - -addnode=node_3:18448 
     - -conf=/run/configs/bitcoin_conf
     ports:
-    - "18445:18443"
-    - "18446:18444"
+    - "18445:18445"
+    - "18446:18446"
     networks:
     - bitcoin-net
     configs:
     - source: bitcoin_conf
       target: /run/configs/bitcoin_conf
-  bitcoin-node-3:
+  node_3:
     image: ruimarinho/bitcoin-core:24.0.1
-    container_name: bitcoin-node-3
+    container_name: node_3
     environment: 
       RPC_USER: user
       RPC_PASS: password
@@ -70,21 +71,21 @@ services:
     - -regtest
     - -printtoconsole
     - -server=1
+    - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
-    - -bind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=10
+    - -maxconnections=30
     - -listen=1
-    - -dns=0
-    - -rpcport=18443
-    - -port=18444
+    - -rpcport=18447
+    - -port=18448
+    - -addnode=node_1:18444 
     - -conf=/run/configs/bitcoin_conf
     ports:
-    - "18447:18443"
-    - "18448:18444"
+    - "18447:18447"
+    - "18448:18448"
     networks:
     - bitcoin-net
     configs:

@@ -7,8 +7,8 @@
     command:
 {COMMANDS}
     ports:
-    - "{RPCPORT}:18443"
-    - "{P2PPORT}:18444"
+    - "{RPCPORT}:{RPCPORT}"
+    - "{P2PPORT}:{P2PPORT}"
     networks:
     - bitcoin-net
     configs:

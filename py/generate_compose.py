@@ -24,7 +24,7 @@ def generate_names(number: int, base_name: str) -> list:
         list: A list of node names.
     """
     
-    return [f"{base_name}-{i+1}" for i in range(number)]
+    return [f"{base_name}_{i+1}" for i in range(number)]
 
 def compute_ports(number: int, base_rpc: int, base_p2p: int, base_name: str) -> dict:
     """Compute the ports for the nodes based on the base ports and the number of nodes.
@@ -44,7 +44,7 @@ def compute_ports(number: int, base_rpc: int, base_p2p: int, base_name: str) -> 
     p2p_port = base_p2p
     
     for i in range(number):
-        node_name = f"{base_name}-{i+1}"
+        node_name = f"{base_name}_{i+1}"
         ports[node_name] = (rpc_port, p2p_port)
         rpc_port += 2
         p2p_port += 2
@@ -110,6 +110,15 @@ def generate_command(
     
     return(command)
 
+def export_rpc_ports_env(all_ports: dict, output_file: str):
+    with open(output_file, 'w') as file:
+        file.write("# RPC ports for each node\n")
+        for node_name, ports in all_ports.items():
+            rpc_port = ports[0]
+            env_name = node_name.upper().replace("-", "_") + "_RPC_PORT"
+            file.write(f"{env_name}={rpc_port}\n")
+    print(f"RPC ports exported to {output_file}.")
+    
 # ==== main logic ====
 if __name__ == "__main__":
     # generate node names, ports and peers
@@ -118,6 +127,9 @@ if __name__ == "__main__":
     peers = generate_peers(node_names, MAX_PEERS)
     
     services = ""
+    
+    # export rpc ports to a file
+    export_rpc_ports_env(all_ports, 'docker/.env.rpc_ports')
 
     # iterate on each nodes
     for node_name in node_names:

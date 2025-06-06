@@ -110,14 +110,33 @@ def generate_command(
     
     return(command)
 
-def export_rpc_ports_env(all_ports: dict, output_file: str):
-    with open(output_file, 'w') as file:
+def export_data(all_ports: dict, node_names: list, output_dir: str = 'data'):
+    """Export node names and RPC ports to environment files.
+
+    Args:
+        all_ports (dict): A dictionary where keys are node names and values are tuples (rpc_port, p2p_port).
+        node_names (list): List of node names.
+        output_dir (str): Subdirectory of /docker to store the .env files. Defaults to 'data'.
+    """
+    
+    # export node names :
+    output_file_names = f"docker/{output_dir}/.env.node_names"
+    with open(output_file_names, 'w') as file:
+        file.write("# Node names\n")
+        for node_name in node_names:
+            env_name = node_name.upper().replace("-", "_")
+            file.write(f"{node_name}\n")
+    print(f"Node names exported to {output_file_names}.")
+            
+    # export ports :
+    output_file_port = f"docker/{output_dir}/.env.rpc_ports"
+    with open(output_file_port, 'w') as file:
         file.write("# RPC ports for each node\n")
         for node_name, ports in all_ports.items():
             rpc_port = ports[0]
             env_name = node_name.upper().replace("-", "_") + "_RPC_PORT"
-            file.write(f"{env_name}={rpc_port}\n")
-    print(f"RPC ports exported to {output_file}.")
+            file.write(f"{env_name}={rpc_port}\n")          
+    print(f"RPC ports exported to {output_file_port}.")
     
 # ==== main logic ====
 if __name__ == "__main__":
@@ -129,7 +148,7 @@ if __name__ == "__main__":
     services = ""
     
     # export rpc ports to a file
-    export_rpc_ports_env(all_ports, 'docker/.env.rpc_ports')
+    export_data(all_ports, node_names)
 
     # iterate on each nodes
     for node_name in node_names:

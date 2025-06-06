@@ -16,11 +16,12 @@ services:
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=30
+    - -maxconnections=128
     - -listen=1
     - -rpcport=18443
     - -port=18444
-    - -addnode=node_3:18448 
+    - -addnode=node_5:18452 
+    - -addnode=node_6:18454 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18443:18443"
@@ -46,11 +47,11 @@ services:
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=30
+    - -maxconnections=128
     - -listen=1
     - -rpcport=18445
     - -port=18446
-    - -addnode=node_1:18444 
+    - -addnode=node_4:18450 
     - -addnode=node_3:18448 
     - -conf=/run/configs/bitcoin_conf
     ports:
@@ -77,15 +78,114 @@ services:
     - -rpcuser=user
     - -rpcpassword=password
     - -fallbackfee=0.00001
-    - -maxconnections=30
+    - -maxconnections=128
     - -listen=1
     - -rpcport=18447
     - -port=18448
-    - -addnode=node_1:18444 
+    - -addnode=node_6:18454 
+    - -addnode=node_4:18450 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18447:18447"
     - "18448:18448"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+  node_4:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: node_4
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -debug=net
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=128
+    - -listen=1
+    - -rpcport=18449
+    - -port=18450
+    - -addnode=node_5:18452 
+    - -addnode=node_1:18444 
+    - -addnode=node_2:18446 
+    - -addnode=node_3:18448 
+    - -addnode=node_6:18454 
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18449:18449"
+    - "18450:18450"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+  node_5:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: node_5
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -debug=net
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=128
+    - -listen=1
+    - -rpcport=18451
+    - -port=18452
+    - -addnode=node_1:18444 
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18451:18451"
+    - "18452:18452"
+    networks:
+    - bitcoin-net
+    configs:
+    - source: bitcoin_conf
+      target: /run/configs/bitcoin_conf
+  node_6:
+    image: ruimarinho/bitcoin-core:24.0.1
+    container_name: node_6
+    environment: 
+      RPC_USER: user
+      RPC_PASS: password
+    command:
+    - -regtest
+    - -printtoconsole
+    - -server=1
+    - -debug=net
+    - -rpcallowip=0.0.0.0/0
+    - -rpcbind=0.0.0.0
+    - -rpcuser=user
+    - -rpcpassword=password
+    - -fallbackfee=0.00001
+    - -maxconnections=128
+    - -listen=1
+    - -rpcport=18453
+    - -port=18454
+    - -addnode=node_5:18452 
+    - -addnode=node_4:18450 
+    - -addnode=node_3:18448 
+    - -addnode=node_1:18444 
+    - -addnode=node_2:18446 
+    - -conf=/run/configs/bitcoin_conf
+    ports:
+    - "18453:18453"
+    - "18454:18454"
     networks:
     - bitcoin-net
     configs:

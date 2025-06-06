@@ -20,10 +20,10 @@ else
 fi
 
 # export all ports from docker/.env.rpc_ports
-if [[ -f ./docker/.env.rpc_ports ]]; then
+if [[ -f ./docker/data/.env.rpc_ports ]]; then
     set -a
     # shellcheck disable=SC1091
-    source ./docker/.env.rpc_ports
+    source ./docker/data/.env.rpc_ports
     set +a
 else
     echo "[ERROR] RPC ports file not found at ./docker/.env.rpc_ports."

@@ -72,12 +72,16 @@ def visualize_network(img_path : str = 'img/bitcoin_network_map.png'):
     inbound_edges = [(u, v) for u, v, d in G.edges(data=True) if d.get('type') == 'inbound']
     
     nx.draw_networkx_edges(G, pos, edgelist=manual_edges, 
-                          edge_color='red', alpha=0.7, width=2, 
-                          arrowsize=20, label='Outbound connections')
+                          edge_color='red', alpha=0.8, width=2.5,
+                          arrowsize=25, arrowstyle='->',
+                          connectionstyle='arc3,rad=0.1',
+                          label='Outbound connections (manual)')
     
     nx.draw_networkx_edges(G, pos, edgelist=inbound_edges, 
-                          edge_color='blue', alpha=0.7, width=1, 
-                          arrowsize=15, label='Inbound connections')
+                          edge_color='blue', alpha=0.8, width=2,
+                          arrowsize=25, arrowstyle='->',
+                            connectionstyle='arc3,rad=0.1',
+                            label='Inbound connections')
     
     # Ajoute les labels des nœuds
     nx.draw_networkx_labels(G, pos, font_size=10, font_weight='bold')

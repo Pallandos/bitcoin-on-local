@@ -48,9 +48,9 @@ case "$ARG1" in
         stop_network
         ;;
     "renew")
-        echo "[INFO ] Recreate configuration and restart Bitcoin network"
+        echo "[INFO ] Generating new compose file"
         generate_config
-        start_network
+        echo "[INFO ] You can now start the network with $0 start"
         ;;
     *)
         echo "Usage: $0 {start|stop|renew}"

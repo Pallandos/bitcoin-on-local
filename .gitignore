@@ -1,2 +1,5 @@
 .venv/
-/logs/
+logs/
+img/
+
+/py/tests.py

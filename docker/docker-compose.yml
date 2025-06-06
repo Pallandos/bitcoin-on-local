@@ -7,21 +7,20 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18443
     - -port=18444
-    - -addnode=node_5:18452 
+    - -addnode=node_3:18448 
+    - -addnode=node_2:18446 
     - -addnode=node_6:18454 
+    - -addnode=node_4:18450 
+    - -addnode=node_5:18452 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18443:18443"
@@ -38,21 +37,17 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18445
     - -port=18446
     - -addnode=node_4:18450 
-    - -addnode=node_3:18448 
+    - -addnode=node_1:18444 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18445:18445"
@@ -69,21 +64,19 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18447
     - -port=18448
     - -addnode=node_6:18454 
     - -addnode=node_4:18450 
+    - -addnode=node_5:18452 
+    - -addnode=node_2:18446 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18447:18447"
@@ -100,24 +93,19 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18449
     - -port=18450
-    - -addnode=node_5:18452 
-    - -addnode=node_1:18444 
+    - -addnode=node_6:18454 
     - -addnode=node_2:18446 
     - -addnode=node_3:18448 
-    - -addnode=node_6:18454 
+    - -addnode=node_5:18452 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18449:18449"
@@ -134,15 +122,11 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18451
@@ -164,24 +148,17 @@ services:
       RPC_USER: user
       RPC_PASS: password
     command:
-    - -regtest
-    - -printtoconsole
-    - -server=1
     - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser=user
     - -rpcpassword=password
-    - -fallbackfee=0.00001
     - -maxconnections=128
     - -listen=1
     - -rpcport=18453
     - -port=18454
     - -addnode=node_5:18452 
     - -addnode=node_4:18450 
-    - -addnode=node_3:18448 
-    - -addnode=node_1:18444 
-    - -addnode=node_2:18446 
     - -conf=/run/configs/bitcoin_conf
     ports:
     - "18453:18453"

@@ -124,7 +124,6 @@ def export_data(all_ports: dict, node_names: list, output_dir: str = 'data'):
     with open(output_file_names, 'w') as file:
         file.write("# Node names\n")
         for node_name in node_names:
-            env_name = node_name.upper().replace("-", "_")
             file.write(f"{node_name}\n")
     print(f"Node names exported to {output_file_names}.")
             

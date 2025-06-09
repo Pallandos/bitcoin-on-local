@@ -24,3 +24,10 @@ NODE_BASE_NAME = os.getenv("NODE_BASE_NAME", "node")
 # ==== login ====
 RPC_USER = os.getenv("RPC_USER", "user")
 RPC_PASSWORD = os.getenv("RPC_PASSWORD", "password")
+
+# ==== data ====
+LOGS_PATH = os.getenv("LOGS_PATH", "./logs")
+
+LOG_NET_ENABLED = os.getenv("LOG_NET_ENABLED", "true").lower() == "true"
+LOG_TX_ENABLED = os.getenv("LOG_TX_ENABLED", "true").lower() == "true"
+LOG_MEMPOOL_ENABLED = os.getenv("LOG_MEMPOOL_ENABLED", "true").lower() == "true"

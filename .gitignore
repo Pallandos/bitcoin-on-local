@@ -2,5 +2,7 @@
 logs/
 img/
 
+__pycache__/*
+*.pyc
+
 /py/tests.py
-**/*.pyc

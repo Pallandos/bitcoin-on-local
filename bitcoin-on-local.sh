@@ -9,13 +9,21 @@ ARG1="${1:-}"
 
 # ==== Functions ====
 
+function is_docker_running() {
+    if [[ -n "$(docker compose -f ./docker/docker-compose.yml ps -q)" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 function start_network() {
     if [[ ! -f ./docker/docker-compose.yml ]]; then
         echo "[ERROR] Docker Compose file not found. Please ensure you have the correct path."
         exit 1
     fi
     # check if a docker is already running
-    if [[ -n "$(docker compose -f ./docker/docker-compose.yml ps -q)" ]] ; then
+    if is_docker_running ; then
         echo "[WARNING] Docker is already running. Stopping existing containers..."
         docker compose -f ./docker/docker-compose.yml down -v --remove-orphans
     fi
@@ -25,9 +33,9 @@ function start_network() {
 
 function stop_network() {
     # check if a docker is running
-    if [[ -z "$(docker compose -f ./docker/docker-compose.yml ps -q)" ]] ; then
-        echo "[ERROR] No running Docker containers found."
-        exit 1
+    if  ! is_docker_running; then
+        echo "[ERROR] No Docker containers are running."
+        return 1
     else
         docker compose -f ./docker/docker-compose.yml down -v --remove-orphans
     fi
@@ -45,6 +53,12 @@ function generate_config() {
 }
 
 function draw_network() {
+    # check if docker is running
+    if ! is_docker_running; then
+        echo "[ERROR] Docker is not running. Please start the network first."
+        exit 1
+    fi
+
     if [[ -f ./py/draw_network.py ]]; then
         python3 ./py/draw_network.py "$1"
     else

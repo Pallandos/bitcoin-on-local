@@ -9,7 +9,11 @@ from config import (
     MAX_PEERS,
     NODE_BASE_NAME,
     RPC_USER,
-    RPC_PASSWORD
+    RPC_PASSWORD,
+    LOGS_PATH,
+    LOG_NET_ENABLED,
+    LOG_TX_ENABLED,
+    LOG_MEMPOOL_ENABLED
 )
 
 # ==== functions ====
@@ -86,6 +90,7 @@ def generate_command(
         p2p_port,
         peers,
         all_ports : dict,
+        node_name,
     ):
     
     add_command = ""
@@ -94,6 +99,14 @@ def generate_command(
             _ , p2p_peer = all_ports[peer]
             add_command += f"    - -addnode={peer}:{p2p_peer} \n"
             #                 ^ the indentation is important for the docker-compose file
+    
+    #optional logging commands
+    if LOG_NET_ENABLED:
+        add_command += "    - -debug=net \n"
+    if LOG_TX_ENABLED:
+        add_command += "    - -debug=tx\n"
+    if LOG_MEMPOOL_ENABLED:
+        add_command += "    - -debug=mempool\n"
     
     add_command = add_command.strip('\n')  # Remove trailing newline
     
@@ -105,7 +118,8 @@ def generate_command(
             MAXCONNECTIONS = max_peers,
             RPCPORT = rpc_port,
             P2PPORT = p2p_port,
-            ADDNODE = add_command
+            ADDNODE = add_command,
+            NODENAME= node_name,
         )
     
     return(command)
@@ -160,7 +174,8 @@ if __name__ == "__main__":
             rpc_port=all_ports[node_name][0],
             p2p_port=all_ports[node_name][1],
             peers=peers[node_name],
-            all_ports=all_ports
+            all_ports=all_ports,
+            node_name=node_name,
         )
         
         with open("docker/templates/docker-service.template",'r') as file:
@@ -172,7 +187,8 @@ if __name__ == "__main__":
                 RPCPASSWORD = RPC_PASSWORD,
                 RPCPORT = all_ports[node_name][0],
                 P2PPORT = all_ports[node_name][1],
-                COMMANDS = commands
+                COMMANDS = commands,
+                LOGSPATH = LOGS_PATH,
             )
             
         services += service + "\n"

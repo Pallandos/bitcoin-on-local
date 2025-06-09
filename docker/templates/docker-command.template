@@ -1,4 +1,3 @@
-    - -debug=net
     - -rpcallowip=0.0.0.0/0
     - -rpcbind=0.0.0.0
     - -rpcuser={RPCUSER}
@@ -9,3 +8,4 @@
     - -port={P2PPORT}
 {ADDNODE}
     - -conf=/run/configs/bitcoin_conf
+    - -debuglogfile=/logs/{NODENAME}.log

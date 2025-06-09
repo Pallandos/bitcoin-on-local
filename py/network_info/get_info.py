@@ -19,7 +19,7 @@ def get_peer_info(node_name : str):
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         return json.loads(result.stdout)
     except Exception as e:
-        print(f"Erreur pour {node_name}: {e}")
+        print(f"Error for {node_name}: {e}")
         return []
     
 if __name__ == "__main__":

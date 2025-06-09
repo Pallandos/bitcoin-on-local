@@ -24,7 +24,14 @@ function start_network() {
 }
 
 function stop_network() {
-    docker compose -f ./docker/docker-compose.yml down -v --remove-orphans
+    # check if a docker is running
+    if [[ -z "$(docker compose -f ./docker/docker-compose.yml ps -q)" ]] ; then
+        echo "[ERROR] No running Docker containers found."
+        exit 1
+    else
+        docker compose -f ./docker/docker-compose.yml down -v --remove-orphans
+    fi
+
 }
 
 function generate_config() {

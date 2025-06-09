@@ -13,7 +13,7 @@ def _docker_dns(ip_address):
     """
     try:
         # Get all container IDs
-        result = subprocess.run(['docker', 'ps', '-q'], 
+        result = subprocess.run(['/bin/docker', 'ps', '-q'], 
                                 capture_output=True, text=True, check=True)
         container_ids = result.stdout.strip().split('\n')
             
@@ -22,7 +22,7 @@ def _docker_dns(ip_address):
                 continue
                     
             # Inspect each container
-            inspect_result = subprocess.run(['docker', 'inspect', container_id],
+            inspect_result = subprocess.run(['/bin/docker', 'inspect', container_id],
                                              capture_output=True, text=True, check=True)
             container_info = json.loads(inspect_result.stdout)[0]
                 

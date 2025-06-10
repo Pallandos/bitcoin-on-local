@@ -2,6 +2,21 @@ import requests
 import json
 from typing import Any
 
+# === Custom Exceptions ===
+class BitcoinRPCError(Exception):
+    """Custom exception for Bitcoin RPC errors"""
+    pass
+
+class BitcoinRPCConnectionError(BitcoinRPCError):
+    """Exception raised when RPC connection fails"""
+    pass
+
+class BitcoinRPCMethodError(BitcoinRPCError):
+    """Exception raised when RPC method returns an error"""
+    pass
+
+# ==========================
+
 class BitcoinRPC:
     """A class to handle RPC calls to Bitcoin nodes.
     """
@@ -44,11 +59,11 @@ class BitcoinRPC:
         )
         
         if response.status_code != 200:
-            raise Exception(f"RPC call failed: {response.status_code}")
+            raise BitcoinRPCConnectionError(f"RPC call failed: {response.status_code}")
         
         result = response.json()
         if result.get('error'):
-            raise Exception(f"RPC error: {result['error']}")
+            raise BitcoinRPCMethodError(f"RPC error: {result['error']}")
         
         return result.get('result')
 

@@ -80,6 +80,7 @@ case "$ARG1" in
     "start")
         echo "[INFO ] Start Bitcoin network with current configuration"
         start_network
+        ./script/bit-logs.sh
         ;;
     "stop")
         echo "[INFO ] Stopping Bitcoin network..."

@@ -17,16 +17,15 @@ services:
     - -port=18444
     - -addnode=node_4:18450 
     - -addnode=node_2:18446 
+    - -addnode=node_5:18452 
+    - -addnode=node_3:18448 
     - -debug=net 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
-    - -debuglogfile=/logs/node_1.log
     ports:
     - "18443:18443"
     - "18444:18444"
-    volumes:
-    - ../logs:/logs
     networks:
     - bitcoin-net
     configs:
@@ -47,18 +46,15 @@ services:
     - -listen=1
     - -rpcport=18445
     - -port=18446
-    - -addnode=node_5:18452 
+    - -addnode=node_3:18448 
     - -addnode=node_4:18450 
     - -debug=net 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
-    - -debuglogfile=/logs/node_2.log
     ports:
     - "18445:18445"
     - "18446:18446"
-    volumes:
-    - ../logs:/logs
     networks:
     - bitcoin-net
     configs:
@@ -79,18 +75,17 @@ services:
     - -listen=1
     - -rpcport=18447
     - -port=18448
-    - -addnode=node_1:18444 
+    - -addnode=node_2:18446 
     - -addnode=node_4:18450 
+    - -addnode=node_1:18444 
+    - -addnode=node_5:18452 
     - -debug=net 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
-    - -debuglogfile=/logs/node_3.log
     ports:
     - "18447:18447"
     - "18448:18448"
-    volumes:
-    - ../logs:/logs
     networks:
     - bitcoin-net
     configs:
@@ -112,19 +107,14 @@ services:
     - -rpcport=18449
     - -port=18450
     - -addnode=node_5:18452 
-    - -addnode=node_3:18448 
-    - -addnode=node_1:18444 
     - -addnode=node_2:18446 
     - -debug=net 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
-    - -debuglogfile=/logs/node_4.log
     ports:
     - "18449:18449"
     - "18450:18450"
-    volumes:
-    - ../logs:/logs
     networks:
     - bitcoin-net
     configs:
@@ -145,19 +135,15 @@ services:
     - -listen=1
     - -rpcport=18451
     - -port=18452
-    - -addnode=node_2:18446 
     - -addnode=node_3:18448 
     - -addnode=node_1:18444 
     - -debug=net 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
-    - -debuglogfile=/logs/node_5.log
     ports:
     - "18451:18451"
     - "18452:18452"
-    volumes:
-    - ../logs:/logs
     networks:
     - bitcoin-net
     configs:

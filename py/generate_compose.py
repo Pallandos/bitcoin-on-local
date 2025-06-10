@@ -90,7 +90,6 @@ def generate_command(
         p2p_port,
         peers,
         all_ports : dict,
-        node_name,
     ):
     
     add_command = ""
@@ -119,7 +118,6 @@ def generate_command(
             RPCPORT = rpc_port,
             P2PPORT = p2p_port,
             ADDNODE = add_command,
-            NODENAME= node_name,
         )
     
     return(command)
@@ -175,7 +173,6 @@ if __name__ == "__main__":
             p2p_port=all_ports[node_name][1],
             peers=peers[node_name],
             all_ports=all_ports,
-            node_name=node_name,
         )
         
         with open("docker/templates/docker-service.template",'r') as file:
@@ -188,7 +185,6 @@ if __name__ == "__main__":
                 RPCPORT = all_ports[node_name][0],
                 P2PPORT = all_ports[node_name][1],
                 COMMANDS = commands,
-                LOGSPATH = LOGS_PATH,
             )
             
         services += service + "\n"

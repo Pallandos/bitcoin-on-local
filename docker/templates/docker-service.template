@@ -9,8 +9,6 @@
     ports:
     - "{RPCPORT}:{RPCPORT}"
     - "{P2PPORT}:{P2PPORT}"
-    volumes:
-    - {LOGSPATH}:/logs
     networks:
     - bitcoin-net
     configs:

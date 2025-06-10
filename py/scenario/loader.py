@@ -4,7 +4,7 @@ from typing import List, Dict, Any
 
 class ScenarioLoader:
     
-    def __init__(self, scenarios_dir : str  = "./scenarios"):
+    def __init__(self, scenarios_dir : str = "./scenarios"):
         """Initialize the ScenarioLoader with the directory containing scenario files.
 
         Args:

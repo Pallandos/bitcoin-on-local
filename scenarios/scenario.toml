@@ -1,0 +1,31 @@
+# this is a scenario file in TOML
+
+[scenario]
+name = "My scenario for bitcoin net"
+description = """\
+                This is a test scenario \
+                It will describes in a sequential order some tasks \
+                which will be executed by the network.\
+                """
+date = 2025-06-10T13:08:00
+author = "Pallandos"
+
+[config]
+default_node = "node_1"
+default_wait = 2
+timeout = 10
+
+# ===== steps =====
+[steps.step1]
+name = "Create wallet"
+action = "create_wallet"
+node = "node_1"
+args.name = "wallet1"
+wait_after = 4
+
+[steps.step2]
+name = "Create address"
+action = "create_address"
+node = "node_1"
+args.store_result = "ADDRESS1"
+wait_after = 4

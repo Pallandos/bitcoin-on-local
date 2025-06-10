@@ -30,7 +30,7 @@ function start_logging() {
         exit 1
     fi
 
-    echo "[LOGS ] Starting logs for : $docker_name in $LOGS_PATH"
+    echo "[LOGS ] Starting logs for : $docker_name"
     docker logs "$docker_name" --follow > "${LOGS_PATH}/${docker_name}.log" 2>&1 &
 
 }
@@ -46,7 +46,7 @@ if [[ -z "$docker_names" ]]; then
 fi
 
 # start logging for each docker name
-echo "[LOGS ] Starting logging ..."
+echo "[LOGS ] Starting logging in $LOGS_PATH"
 for docker_name in $docker_names; do
     start_logging "$docker_name"
 done

@@ -10,7 +10,6 @@ from config import (
     NODE_BASE_NAME,
     RPC_USER,
     RPC_PASSWORD,
-    LOGS_PATH,
     LOG_NET_ENABLED,
     LOG_TX_ENABLED,
     LOG_MEMPOOL_ENABLED

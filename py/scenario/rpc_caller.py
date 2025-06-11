@@ -6,6 +6,10 @@ class BitcoinRPCError(Exception):
     """Custom exception for Bitcoin RPC errors."""
     pass
 
+class RPCUnexpectedResponseError(Exception):
+    """Custom exception for unexpected responses from Bitcoin RPC."""
+    pass
+
 class BitcoinRPC:
     """A class to handle RPC calls to Bitcoin nodes.
     """
@@ -65,5 +69,5 @@ class BitcoinRPC:
         except json.JSONDecodeError as e:
             raise json.JSONDecodeError(f"Invalid JSON response from {node}") from e
         except Exception as e:
-            raise
+            raise RPCUnexpectedResponseError(f"Unexpected response from {node}: {str(e)}") from e
 

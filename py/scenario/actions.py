@@ -37,7 +37,7 @@ class ActionExecutor:
     
     # ===== Action Methods =====
     
-    def _action_CMD(self, node: str, params: Dict[str, Any] = None) -> Any:
+    def _action_cmd(self, node: str, params: Dict[str, Any] = None) -> Any:
         """Execute a raw command on the specified node."""
         if params is None:
             params = {}

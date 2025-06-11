@@ -2,6 +2,14 @@ import requests
 import json
 from typing import Any
 
+class BitcoinRPCError(Exception):
+    """Custom exception for Bitcoin RPC errors."""
+    pass
+
+class RPCUnexpectedResponseError(Exception):
+    """Custom exception for unexpected responses from Bitcoin RPC."""
+    pass
+
 class BitcoinRPC:
     """A class to handle RPC calls to Bitcoin nodes.
     """
@@ -50,20 +58,16 @@ class BitcoinRPC:
             
             # Check for RPC errors
             if 'error' in result and result['error'] is not None:
-                raise Exception(f"RPC error on {node}: {result['error']}")
+                raise BitcoinRPCError(f"RPC error on {node}: {result['error']}")
                 
             return result.get('result', None)
             
         except requests.ConnectionError as e:
-            print(f"[ERROR] Cannot connect to node {node} on port {port}")
-            raise Exception(f"Connection failed to {node}") from e
+            raise requests.ConnectionError(f"Connection failed to {node}") from e
         except requests.Timeout as e:
-            print(f"[ERROR] Request timeout for node {node}")
-            raise Exception(f"Timeout for {node}") from e
+            raise requests.Timeout(f"Timeout for {node}") from e
         except json.JSONDecodeError as e:
-            print(f"[ERROR] Invalid response from node {node}")
-            raise Exception(f"Invalid JSON response from {node}") from e
+            raise json.JSONDecodeError(f"Invalid JSON response from {node}") from e
         except Exception as e:
-            print(f"[ERROR] Failed to call {method} on {node}: {str(e)}")
-            raise
+            raise RPCUnexpectedResponseError(f"Unexpected response from {node}: {str(e)}") from e
 

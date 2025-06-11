@@ -37,6 +37,15 @@ class ActionExecutor:
     
     # ===== Action Methods =====
     
+    def _action_CMD(self, node: str, params: Dict[str, Any] = None) -> Any:
+        """Execute a raw command on the specified node."""
+        if params is None:
+            params = {}
+        command = params.get('cmd', '')
+        call = command.split(' ')[0]
+        args = command.split(' ')[1:] if len(command.split(' ')) > 1 else []
+        return self.rpc.call(node, call, args)
+    
     def _action_create_wallet(self, node: str, params: Dict[str, Any] = None) -> Any:
         """Create a new wallet on the specified node."""
         if params is None:

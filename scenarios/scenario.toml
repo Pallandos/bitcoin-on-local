@@ -13,14 +13,14 @@ author = "Pallandos"
 [config]
 default_node = "node_1"
 default_wait = 2
-timeout = 10
+timeout = 2
 
 # ===== steps =====
 [steps.step1]
 name = "Create wallet"
 action = "create_wallet"
 node = "node_1"
-args.name = "wallet1"
+args.wallet_name = "wallet1"
 wait_after = 4
 
 [steps.step2]
@@ -29,3 +29,18 @@ action = "create_address"
 node = "node_1"
 args.store_result = "ADDRESS1"
 wait_after = 4
+
+[steps.step3]
+name = "info of peers"
+action = "CMD"
+node = "node_3"
+args.cmd = "getpeerinfo"
+print = false
+wait_after = 2
+
+[steps.step4]
+name = "send coins"
+action = "sent_to"
+node = "node_1"
+args.amount = 10
+args.to = "${ADDRESS1}"

@@ -3,6 +3,8 @@ from pathlib import Path
 from typing import List, Dict, Any
 
 class ScenarioLoader:
+    """A class to load and validate scenarios from TOML files.
+    """
     
     def __init__(self, scenarios_dir : str = "./scenarios"):
         """Initialize the ScenarioLoader with the directory containing scenario files.
@@ -43,7 +45,7 @@ class ScenarioLoader:
                 return False
         
         # validate steps
-        required_keys_steps = ["name", "action","node"]
+        required_keys_steps = ["name", "action"]
         for step in data["steps"]:
             for key in required_keys_steps:
                 if key not in data["steps"][step]:

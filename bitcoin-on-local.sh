@@ -99,6 +99,12 @@ case "$ARG1" in
             draw_network "$2"
         fi
         ;;
+    "restart")
+        echo "[INFO ] Restarting Bitcoin network..."
+        stop_network
+        start_network
+        ./script/bit-logs.sh
+        ;;
     "help")
         print_help
         ;;

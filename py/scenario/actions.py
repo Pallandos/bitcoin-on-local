@@ -50,13 +50,16 @@ class ActionExecutor:
         """Create a new wallet on the specified node."""
         if params is None:
             params = {}
-        return self.rpc.call(node, 'createwallet', [params.get('wallet_name', 'default_wallet')])
+        wallet_name = params.get('wallet_name', 'default_wallet')
+        return self.rpc.call(node, 'createwallet', [wallet_name])
     
     def _action_create_address(self, node: str, params: Dict[str, Any] = None) -> Any:
         """Create a new address on the specified node."""
         if params is None:
             params = {}
-        return self.rpc.call(node, 'getnewaddress', [params.get('label', ''), params.get('address_type', 'bech32')])
+        label = params.get('label', '')
+        address_type = params.get('address_type', 'bech32')
+        return self.rpc.call(node, 'getnewaddress', [label, address_type])
 
     def _action_send_to(self, node: str, params: Dict[str, Any] = None) -> Any:
         """Send Bitcoin to a specified address on the node."""
@@ -72,4 +75,5 @@ class ActionExecutor:
         if params is None:
             params = {}
         num_blocks = params.get('amount', 1)
-        return self.rpc.call(node, 'generatetoaddress', [num_blocks, params.get('address', '')])
+        address = params.get('address', None) #required
+        return self.rpc.call(node, 'generatetoaddress', [num_blocks, address])

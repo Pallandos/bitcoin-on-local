@@ -9,4 +9,4 @@
 
 This is a tool to deploy a Bitcoin network on your local machine to do some regtest.
 
-// in dev //
+Documentation is beeing written. See [scenario documentation](./doc/scenario.md) and [action documentation](./doc/actions.md)

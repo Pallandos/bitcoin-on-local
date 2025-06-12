@@ -3,7 +3,7 @@
 [scenario]
 name = "My scenario for bitcoin net"
 description = """\
-                This is a test scenario \
+                This is an example scenario \
                 It will describes in a sequential order some tasks \
                 which will be executed by the network.\
                 """

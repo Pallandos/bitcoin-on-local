@@ -29,6 +29,7 @@ You can see the [`scenario.toml`](../scenarios/scenario.toml) example.
 The `[scenario]` section provides essential metadata about the scenario.
 
 **Required fields:**
+
 - `name` - Name of the scenario
   - **Type:** `string`
   - **Description:** A short, descriptive name for the scenario
@@ -97,6 +98,7 @@ The `[steps]` section contains all the actions that will be executed sequentiall
   - **Description:** Must match one of the available action types (see [Actions documentation](actions.md))
 
 **Optional fields:**
+
 - `node` - Node identifier for this specific step
   - **Type:** `string`
   - **Default:** Uses `config.default_node`

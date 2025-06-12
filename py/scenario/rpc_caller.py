@@ -52,13 +52,11 @@ class BitcoinRPC:
                 auth=(self.rpc_user, self.rpc_password),
                 timeout=10
             )
-            response.raise_for_status()
-            
             result = response.json()
             
             # Check for RPC errors
             if 'error' in result and result['error'] is not None:
-                raise BitcoinRPCError(f"RPC error on {node}: {result['error']}")
+                raise BitcoinRPCError(f"RPC error on {node}: {result['error']['message']}")
                 
             return result.get('result', None)
             

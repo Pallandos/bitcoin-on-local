@@ -101,9 +101,7 @@ case "$ARG1" in
         ;;
     "restart")
         echo "[INFO ] Restarting Bitcoin network..."
-        stop_network
-        start_network
-        ./script/bit-logs.sh
+        docker compose -f ./docker/docker-compose.yml restart
         ;;
     "help")
         print_help

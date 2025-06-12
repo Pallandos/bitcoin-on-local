@@ -72,12 +72,12 @@ class ScenarioRunner:
         args = self._substitute_variables(step.get("args", {}))
         
         # execute the action
-        print(f"Running step: {action_name} on node: {node}")
+        print(f"Running step: {action_name} (on node: {node})")
         result = self.executor.execute(action, node, args)
         
         # == deal with options ==
         if step.get("print", False):
-            print(f"Result: \n {result}")
+            print(f"Result: \n → {result} \n")
         if args.get("store_result",""):
             # store the result in the variables dict
             var_name = args.get("store_result")

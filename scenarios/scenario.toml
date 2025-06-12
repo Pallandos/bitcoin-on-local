@@ -31,16 +31,44 @@ args.store_result = "ADDRESS1"
 wait_after = 4
 
 [steps.step3]
-name = "info of peers"
-action = "cmd"
-node = "node_3"
-args.cmd = "getpeerinfo"
-print = false
-wait_after = 2
+name = "Mine some blocks"
+action = "mine"
+node = "node_1"
+args.amount = 101
+args.address = "${ADDRESS1}"
+
 
 [steps.step4]
+name = "Create wallet"
+action = "create_wallet"
+node = "node_2"
+args.wallet_name = "wallet2"
+wait_after = 4
+
+[steps.step5]
+name = "Create address"
+action = "create_address"
+node = "node_2"
+args.store_result = "ADDRESS2"
+wait_after = 4
+
+[steps.step6]
 name = "send coins"
-action = "sent_to"
+action = "send_to"
 node = "node_1"
-args.amount = 10
-args.to = "${ADDRESS1}"
+args.amount = "10"
+args.to = "${ADDRESS2}"
+
+[steps.step7]
+name = "mine to confirm"
+action = "mine"
+node = "node_1"
+args.amount = 1
+args.address = "${ADDRESS1}"
+
+[steps.step8]
+name = "print balance"
+action = "cmd"
+node = "node_2"
+args.cmd = "getbalance"
+print = true

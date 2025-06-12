@@ -57,3 +57,19 @@ class ActionExecutor:
         if params is None:
             params = {}
         return self.rpc.call(node, 'getnewaddress', [params.get('label', ''), params.get('address_type', 'bech32')])
+
+    def _action_send_to(self, node: str, params: Dict[str, Any] = None) -> Any:
+        """Send Bitcoin to a specified address on the node."""
+        if params is None:
+            params = {}
+            
+        address = params.get('to', '')
+        amount = params.get('amount', 0.0)
+        return self.rpc.call(node, 'sendtoaddress', [address, amount])
+    
+    def _action_mine(self, node: str, params: Dict[str, Any] = None) -> Any:
+        """Mine a block on the specified node."""
+        if params is None:
+            params = {}
+        num_blocks = params.get('amount', 1)
+        return self.rpc.call(node, 'generatetoaddress', [num_blocks, params.get('address', '')])

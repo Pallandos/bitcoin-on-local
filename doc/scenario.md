@@ -6,7 +6,6 @@
     - [`[config]` - General configuration](#config---general-configuration)
     - [`[steps]` - Scenario steps](#steps---scenario-steps)
 
-
 A **scenario** is an automated sequence of actions designed to reproduce the exact same sequence of events on a Bitcoin network. The main goal of a scenario is to ensure that a specific situation can be replayed identically, making it possible to analyze, test, or demonstrate network behavior in a consistent and repeatable way.
 
 Scenarios are written in a `.toml` file, and should be put in the `./scenario` folder. 
@@ -63,6 +62,7 @@ author = "Developer"
 The `[config]` section defines default values and global settings that apply to all steps in the scenario unless overridden at the step level.
 
 **Available options:**
+
 - `default_node` - Default node identifier for all actions
   - **Type:** `string`
   - **Description:** Node identifier that will be used when no specific node is specified in a step
@@ -88,6 +88,7 @@ timeout = 30
 The `[steps]` section contains all the actions that will be executed sequentially. Each step is defined as `[steps.step_name]` where `step_name` is a unique identifier for the step.
 
 **Required fields for each step:**
+
 - `name` - Human-readable name for the step
   - **Type:** `string`
   - **Description:** Descriptive name explaining what this step does

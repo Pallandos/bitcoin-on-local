@@ -33,7 +33,6 @@ The `action` parameter has to match one of the following available action.
 
 ## Available actions
 
-
 ### `cmd` - RPC brut command
 
 **Description :** Execute a direct RPC Bitcoin command to the specified node.

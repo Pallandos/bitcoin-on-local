@@ -10,7 +10,7 @@ class ScenarioRunnerError(Exception):
     pass
 class ScenarioNotLoadedError(ScenarioRunnerError):
     """Raised when a scenario is tried to be runned but not loaded."""
-    def __init__(self, scenario_name: str):
+    def __init__(self):
         super().__init__("No scenario loaded. Please load a scenario first.")
 
 class ScenarioRunner:

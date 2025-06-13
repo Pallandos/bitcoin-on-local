@@ -108,6 +108,9 @@ def generate_command(
     
     add_command = add_command.strip('\n')  # Remove trailing newline
     
+    # check the format of template file
+    if not template_path.endswith('.template'):
+        raise ValueError("Template file must have a .template extension.")
     with open(template_path, 'r') as file:
         command_template = file.read()
         command = command_template.format(

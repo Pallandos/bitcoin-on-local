@@ -65,7 +65,7 @@ class BitcoinRPC:
         except requests.Timeout as e:
             raise requests.Timeout(f"Timeout for {node}") from e
         except json.JSONDecodeError as e:
-            raise json.JSONDecodeError(f"Invalid JSON response from {node}") from e
+            raise json.JSONDecodeError(f"Invalid JSON response from {node}","unknown",0) from e
         except Exception as e:
             raise RPCUnexpectedResponseError(f"Unexpected response from {node}: {str(e)}") from e
 

@@ -28,7 +28,7 @@ def _docker_dns(ip_address):
                 
             # Check networks for matching IP
             networks = container_info.get('NetworkSettings', {}).get('Networks', {})
-            for network_name, network_info in networks.items():
+            for _ , network_info in networks.items():
                 if network_info.get('IPAddress') == ip_address:
                     return container_info.get('Name', '').lstrip('/')
                         

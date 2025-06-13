@@ -28,6 +28,9 @@ class ScenarioRunner:
         
         rpc = BitcoinRPC(rpc_user, rpc_password, base_port)
         self.executor = ActionExecutor(rpc)
+        
+        self.scenario = None  # Will hold the loaded scenario
+        self.config = None    # Will hold the scenario configuration
     
     def load_scenario(self, scenario_name : str):
         

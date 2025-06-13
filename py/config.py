@@ -6,7 +6,6 @@ from dotenv import load_dotenv, find_dotenv
 dotenv_path = find_dotenv()
 
 if dotenv_path:
-    print(f"Loading environment variables from {dotenv_path}")
     load_dotenv(dotenv_path, override=True)
 else:
     print("No .env file found")
@@ -31,3 +30,6 @@ LOGS_PATH = os.getenv("LOGS_PATH", "./logs")
 LOG_NET_ENABLED = os.getenv("LOG_NET_ENABLED", "true").lower() == "true"
 LOG_TX_ENABLED = os.getenv("LOG_TX_ENABLED", "true").lower() == "true"
 LOG_MEMPOOL_ENABLED = os.getenv("LOG_MEMPOOL_ENABLED", "true").lower() == "true"
+
+# ==== Scenarios ====
+SCENARIO_PATH = os.getenv("SCENARIO_PATH", "./scenarios")

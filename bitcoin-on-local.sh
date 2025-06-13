@@ -68,10 +68,12 @@ function draw_network() {
 }
 
 function print_help() {
-    echo "Usage: $0 [start|stop|renew|draw [output_file]]"
+    echo "Usage: $0 start|stop|renew|draw|scenario|draw [output_file]"
     echo "  start: Start the Bitcoin network with the current configuration."
     echo "  stop: Stop the Bitcoin network."
     echo "  renew: Generate a new Docker Compose file."
+    echo "  restart: Restart the Bitcoin network."
+    echo "  scenario [args]: Use scenario features (see $0 scenario -h for details)."
     echo "  draw [output_file]: Draw the network topology and save it to output_file (default: img/bitcoin_network_map.png)."
 }
 
@@ -102,6 +104,10 @@ case "$ARG1" in
     "restart")
         echo "[INFO ] Restarting Bitcoin network..."
         docker compose -f ./docker/docker-compose.yml restart
+        ;;
+    "scenario")
+        echo "[INFO ] Using scenario features"
+        ./script/scenario.sh "${@:2}"
         ;;
     "help")
         print_help

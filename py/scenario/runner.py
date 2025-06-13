@@ -33,6 +33,11 @@ class ScenarioRunner:
         self.config = None    # Will hold the scenario configuration
     
     def load_scenario(self, scenario_name : str):
+        """Load a scenario by its name. Required before running it.
+
+        Args:
+            scenario_name (str): Name of the scenario to load (without .toml extension).
+        """
         
         self.scenario = self.loader.load_scenario(scenario_name)
         self.config = self.scenario["config"] # so we dont have to load it again

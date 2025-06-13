@@ -21,7 +21,7 @@ class ScenarioLoader:
         return [f.stem for f in self.scenarios_dir.glob("*.toml")]
     
     @staticmethod
-    def _validator(self, data: Dict[str, Any]) -> bool:
+    def _validator(data: Dict[str, Any]) -> bool:
         """Validate the scenario data structure.
 
         Args:

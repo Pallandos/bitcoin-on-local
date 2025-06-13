@@ -15,7 +15,7 @@ services:
     - -listen=1
     - -rpcport=18443
     - -port=18444
-    - -addnode=node_5:18452 
+    - -addnode=node_2:18446 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
@@ -42,9 +42,8 @@ services:
     - -listen=1
     - -rpcport=18445
     - -port=18446
-    - -addnode=node_5:18452 
-    - -addnode=node_3:18448 
     - -addnode=node_4:18450 
+    - -addnode=node_1:18444 
     - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
@@ -71,7 +70,8 @@ services:
     - -listen=1
     - -rpcport=18447
     - -port=18448
-    - -addnode=node_5:18452 
+    - -addnode=node_2:18446 
+    - -addnode=node_4:18450 
     - -addnode=node_1:18444 
     - -debug=tx
     - -debug=mempool
@@ -127,6 +127,8 @@ services:
     - -rpcport=18451
     - -port=18452
     - -addnode=node_2:18446 
+    - -addnode=node_1:18444 
+    - -addnode=node_4:18450 
     - -addnode=node_3:18448 
     - -debug=tx
     - -debug=mempool

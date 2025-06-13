@@ -1,0 +1,24 @@
+# this is a scenario file in TOML
+
+[scenario]
+name = "My second scenario"
+description = """\
+                This is an example scenario \
+                It will describes in a sequential order some tasks \
+                which will be executed by the network.\
+                """
+date = 2025-06-13T10:43:00
+author = "Pallandos"
+
+[config]
+default_node = "node_1"
+default_wait = 1
+timeout = 4
+
+# ===== steps =====
+[steps.step1]
+name = "Create wallet"
+action = "create_wallet"
+node = "node_1"
+args.wallet_name = "wallet1"
+wait_after = 1

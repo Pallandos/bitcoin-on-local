@@ -3,11 +3,22 @@
 # This script is used to run a Bitcoin network on a local machine
 
 set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # get args:
 ARG1="${1:-}"
 
 # ==== Functions ====
+
+function activate_venv() {
+    if [[ -d "./.venv" ]]; then
+        # shellcheck disable=SC1091
+        source ./.venv/bin/activate
+    else
+        echo "[ERROR] Virtual environment not found. Please create it first."
+        exit 1
+    fi
+}
 
 function is_docker_running() {
     if [[ -n "$(docker compose -f ./docker/docker-compose.yml ps -q)" ]]; then
@@ -23,17 +34,17 @@ function start_network() {
         exit 1
     fi
     # check if a docker is already running
-    if is_docker_running ; then
+    if is_docker_running; then
         echo "[WARNING] Docker is already running. Stopping existing containers..."
         docker compose -f ./docker/docker-compose.yml down -v --remove-orphans
     fi
     echo "Starting Bitcoin network..."
-    docker compose -f ./docker/docker-compose.yml up -d 
+    docker compose -f ./docker/docker-compose.yml up -d
 }
 
 function stop_network() {
     # check if a docker is running
-    if  ! is_docker_running; then
+    if ! is_docker_running; then
         echo "[ERROR] No Docker containers are running."
         return 1
     else
@@ -49,7 +60,7 @@ function generate_config() {
     else
         echo "[ERROR] Configuration generation script not found."
         exit 1
-    fi 
+    fi
 }
 
 function draw_network() {
@@ -78,43 +89,46 @@ function print_help() {
 }
 
 # ==== Main logic ====
+
+activate_venv
+
 case "$ARG1" in
-    "start")
-        echo "[INFO ] Start Bitcoin network with current configuration"
-        start_network
-        ./script/bit-logs.sh
-        ;;
-    "stop")
-        echo "[INFO ] Stopping Bitcoin network..."
-        stop_network
-        ;;
-    "renew")
-        echo "[INFO ] Generating new compose file"
-        generate_config
-        echo "[INFO ] You can now start the network with $0 start"
-        ;;
-    "draw")
-        echo "[INFO ] Drawing network topology"
-        if [[ -z "${2:-}" ]]; then
-            draw_network "img/bitcoin_network_map.png"
-        else
-            draw_network "$2"
-        fi
-        ;;
-    "restart")
-        echo "[INFO ] Restarting Bitcoin network..."
-        docker compose -f ./docker/docker-compose.yml restart
-        ;;
-    "scenario")
-        echo "[INFO ] Using scenario features"
-        ./script/scenario.sh "${@:2}"
-        ;;
-    "help")
-        print_help
-        ;;
-    *)
-        echo "[ERROR] Invalid argument: $ARG1"
-        echo "Use '$0 help' for usage information."
-        exit 1
-        ;;
+"start")
+    echo "[INFO ] Start Bitcoin network with current configuration"
+    start_network
+    ./script/bit-logs.sh
+    ;;
+"stop")
+    echo "[INFO ] Stopping Bitcoin network..."
+    stop_network
+    ;;
+"renew")
+    echo "[INFO ] Generating new compose file"
+    generate_config
+    echo "[INFO ] You can now start the network with $0 start"
+    ;;
+"draw")
+    echo "[INFO ] Drawing network topology"
+    if [[ -z "${2:-}" ]]; then
+        draw_network "img/bitcoin_network_map.png"
+    else
+        draw_network "$2"
+    fi
+    ;;
+"restart")
+    echo "[INFO ] Restarting Bitcoin network..."
+    docker compose -f ./docker/docker-compose.yml restart
+    ;;
+"scenario")
+    echo "[INFO ] Using scenario features"
+    ./script/scenario.sh "${@:2}"
+    ;;
+"help")
+    print_help
+    ;;
+*)
+    echo "[ERROR] Invalid argument: $ARG1"
+    echo "Use '$0 help' for usage information."
+    exit 1
+    ;;
 esac

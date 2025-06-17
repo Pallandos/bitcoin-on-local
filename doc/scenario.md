@@ -10,6 +10,7 @@ A **scenario** is an automated sequence of actions designed to reproduce the exa
 
 Scenarios are written in a `.toml` file, and should be put in the `./scenario` folder. 
 
+> [!TIP]
 > See [TOML website](https://toml.io/en/) for documentation about TOML 
 
 ## Structure of a scenario

@@ -13,10 +13,10 @@
     - [`SCENARIO_PATH`](#scenario_path)
   - [Example](#example)
 
-The `.env` file is used to configure your bitcoin network.
+The `.env` file is used to configure your Bitcoin network.
 
 > [!WARNING]
-> The syntax of `.env` is pretty strict : do not use any spaces before or after the `=`.
+> The syntax of `.env` is pretty strict: do not use any spaces before or after the `=`.
 
 ## Parameters 
 
@@ -27,7 +27,7 @@ The `.env` file is used to configure your bitcoin network.
 - **Default value :**  `0`
 
 > [!IMPORTANT]
-> Remember that each node will be compute by your machine. Even if the image is pretty small you should take in account the power of your machine. 
+> Remember that each node will be computed by your machine. Even if the image is pretty small you should take into account the power of your machine. 
 
 ---
 
@@ -38,7 +38,7 @@ The `.env` file is used to configure your bitcoin network.
 - **Default value :** `0`
 
 > [!NOTE]
-> This parameter should not be fixed under ~11. For obscure reasons if set under, nodes will refuse every connections and you network will be empty.
+> This parameter should not be fixed under ~11. For obscure reasons if set under, nodes will refuse every connection and your network will be empty.
 
 ---
 
@@ -48,7 +48,7 @@ The `.env` file is used to configure your bitcoin network.
 - **Type :** `int`
 - **Default value :** `18443`
 
-Each node will be placed in a docker conteneur. To avoid conlicts with port when interracting from the outside, the ports will be spaced following this formula : $`rpc\_port_{i} = 18443 + (i-1)\times2`$. By doing so, port wont collide. If you have Bitcoin Core running on regtest on your computer, consider changing `NODE_BASE_RPC_PORT` in your config.
+Each node will be placed in a docker container. To avoid conflicts with ports when interacting from the outside, the ports will be spaced following this formula : $`rpc\_port_{i} = 18443 + (i-1)\times2`$. By doing so, the port won't collide. If you have Bitcoin Core running on regtest on your computer, consider changing `NODE_BASE_RPC_PORT` in your config.
 
 ---
 

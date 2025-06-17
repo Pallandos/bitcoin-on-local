@@ -36,7 +36,7 @@ function help() {
     echo "It requires the node name as the first argument and any bitcoin-cli arguments after that."
     echo ""
     echo "Usage: $0 <node_name> <bitcoin-cli-args>"
-    echo "Example: $0 node1 getblockchaininfo"
+    echo "Example: $0 node_1 getblockchaininfo"
     exit 0
 }
 

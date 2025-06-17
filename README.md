@@ -238,5 +238,5 @@ At any time during the run of the network, logs from each node are redirected to
 Available categories are now : 
 
 - net 
-- tx ????
+- tx
 - mempool

@@ -4,7 +4,7 @@
 name = "My scenario for bitcoin net"
 description = """\
                 This is an example scenario \
-                It will describes in a sequential order some tasks \
+                It will describe in a sequential order some tasks \
                 which will be executed by the network.\
                 """
 date = 2025-06-10T13:08:00

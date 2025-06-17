@@ -28,7 +28,6 @@ RPC_PASSWORD = os.getenv("RPC_PASSWORD", "password")
 LOGS_PATH = os.getenv("LOGS_PATH", "./logs")
 
 LOG_NET_ENABLED = os.getenv("LOG_NET_ENABLED", "true").lower() == "true"
-LOG_TX_ENABLED = os.getenv("LOG_TX_ENABLED", "true").lower() == "true"
 LOG_MEMPOOL_ENABLED = os.getenv("LOG_MEMPOOL_ENABLED", "true").lower() == "true"
 
 # ==== Scenarios ====

@@ -15,9 +15,10 @@ services:
     - -listen=1
     - -rpcport=18443
     - -port=18444
-    - -addnode=node_2:18446 
+    - -addnode=node_5:18452 
+    - -addnode=node_3:18448 
     - -addnode=node_4:18450 
-    - -debug=tx
+    - -addnode=node_2:18446 
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
     ports:
@@ -44,10 +45,7 @@ services:
     - -rpcport=18445
     - -port=18446
     - -addnode=node_3:18448 
-    - -addnode=node_1:18444 
     - -addnode=node_4:18450 
-    - -addnode=node_5:18452 
-    - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
     ports:
@@ -74,9 +72,8 @@ services:
     - -rpcport=18447
     - -port=18448
     - -addnode=node_1:18444 
-    - -addnode=node_5:18452 
     - -addnode=node_2:18446 
-    - -debug=tx
+    - -addnode=node_4:18450 
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
     ports:
@@ -102,9 +99,10 @@ services:
     - -listen=1
     - -rpcport=18449
     - -port=18450
-    - -addnode=node_3:18448 
+    - -addnode=node_2:18446 
     - -addnode=node_5:18452 
-    - -debug=tx
+    - -addnode=node_3:18448 
+    - -addnode=node_1:18444 
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
     ports:
@@ -130,11 +128,7 @@ services:
     - -listen=1
     - -rpcport=18451
     - -port=18452
-    - -addnode=node_1:18444 
-    - -addnode=node_4:18450 
     - -addnode=node_2:18446 
-    - -addnode=node_3:18448 
-    - -debug=tx
     - -debug=mempool
     - -conf=/run/configs/bitcoin_conf
     ports:

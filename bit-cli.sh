@@ -3,6 +3,7 @@
 # This is a modified bitocin-cli to interract easily with the bitcoin network on a local machine
 
 set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # export var from .env
 if [[ -f ./.env ]]; then

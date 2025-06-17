@@ -11,7 +11,6 @@ from config import (
     RPC_USER,
     RPC_PASSWORD,
     LOG_NET_ENABLED,
-    LOG_TX_ENABLED,
     LOG_MEMPOOL_ENABLED
 )
 
@@ -101,8 +100,6 @@ def generate_command(
     #optional logging commands
     if LOG_NET_ENABLED:
         add_command += "    - -debug=net \n"
-    if LOG_TX_ENABLED:
-        add_command += "    - -debug=tx\n"
     if LOG_MEMPOOL_ENABLED:
         add_command += "    - -debug=mempool\n"
     

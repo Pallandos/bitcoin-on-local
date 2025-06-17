@@ -85,8 +85,8 @@ def visualize_network(img_path : str = 'img/bitcoin_network_map.png'):
 
     from matplotlib.lines import Line2D
     legend_elements = [
-        Line2D([0], [0], color='blue', lw=2.5, label='Outbound connections (manual)'),
-        Line2D([0], [0], color='red', lw=2, label='Inbound connections')
+        Line2D([0], [0], color='red', lw=2.5, label='Outbound connections (manual)'),
+        Line2D([0], [0], color='blue', lw=2, label='Inbound connections')
     ]
     plt.legend(handles=legend_elements, loc='upper right')
     

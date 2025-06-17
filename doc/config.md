@@ -96,7 +96,6 @@ All node will be named like : `BASE_NAME_i` where `i` is the number of the node 
 - **Type :** `booolean`
 - **Default value :**
   - `LOG_NET_ENABLED` : `true`
-  - `LOG_TX_ENABLED` : `true`
   - `LOG_MEMPOOL_ENABLED` : `true`
 
 The categories above are categories from the valid debug logging categories (see [bitcoin Core doc](https://developer.bitcoin.org/reference/rpc/logging.html)).
@@ -137,7 +136,6 @@ LOGS_PATH=./logs
 
 # the following options describe which logs you want to print (boolean)
 LOG_NET_ENABLED=false
-LOG_TX_ENABLED=true
 LOG_MEMPOOL_ENABLED=true
 
 # ==== Scenarios ====

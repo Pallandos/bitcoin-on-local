@@ -67,9 +67,3 @@ def extract_connections(peers_info):
             connections.append((peer_name,connection_type))
     
     return connections
-
-if __name__ == "__main__":
-    #tests 
-    
-    name = _docker_dns("172.20.0.7")
-    print(name)

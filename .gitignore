@@ -5,4 +5,8 @@ img/
 __pycache__/*
 *.pyc
 
-/py/tests.py
+# tests
+.coverage
+
+# IDE
+.vscode/

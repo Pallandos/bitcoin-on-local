@@ -1,6 +1,7 @@
 <p align="center">
   <a href="https://www.codefactor.io/repository/github/pallandos/bitcoin-on-local"><img src="https://www.codefactor.io/repository/github/pallandos/bitcoin-on-local/badge" alt="CodeFactor" /></a>
   <a href="https://app.deepsource.com/gh/Pallandos/bitcoin-on-local/" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://app.deepsource.com/gh/Pallandos/bitcoin-on-local.svg/?label=active+issues&token=kKD53qXxyNJvHRShZndumcGp"/></a>
+  <a href="https://codecov.io/gh/Pallandos/bitcoin-on-local" ><img src="https://codecov.io/gh/Pallandos/bitcoin-on-local/branch/add-test/graph/badge.svg?token=NUKHTNQ5VH"/></a>
 </p>
 
 # Bitcoin-on-local

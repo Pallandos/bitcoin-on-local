@@ -8,7 +8,7 @@ class TestScenarioLoader:
     def test_init_default_path(self):
         """Test ScenarioLoader initialization with default path."""
         loader = ScenarioLoader()
-        assert loader.scenarios_dir == Path("./scenariosss") # just for testing purposes
+        assert loader.scenarios_dir == Path("./scenarios")
 
     def test_init_custom_path(self):
         """Test ScenarioLoader initialization with custom path."""

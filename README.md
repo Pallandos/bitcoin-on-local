@@ -73,9 +73,9 @@ Usage: ./bitcoin-on-local.sh start|stop|renew|draw|scenario|draw [output_file]
 This tool requires :
 
 - Docker (compose v2)
-- Python (>= 3.12)[^1]
+- Python (>= 3.11)[^1]
 
-[^1]: The tool may work on older versions but has not been tested on it. 
+[^1]: The tool has been tested on Python 3.11 and 3.12
 
 All other dependencies will be installed with pip. See [requirements.txt](./requirements.txt).
 

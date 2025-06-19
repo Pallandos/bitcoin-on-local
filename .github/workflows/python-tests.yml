@@ -6,13 +6,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
@@ -22,7 +26,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=py --cov-report=xml:tests/coverage.xml tests/
+          pytest --cov=py --cov-report=xml:tests/coverage.xml --cov-report=term tests/
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

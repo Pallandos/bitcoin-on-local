@@ -1,5 +1,7 @@
 version = 1
 
+test_patterns = ["tests/**"]
+
 [[analyzers]]
 name = "shell"
 
@@ -8,6 +10,3 @@ name = "python"
 
   [analyzers.meta]
   runtime_version = "3.x.x"
-
-  [analyzers.options]
-  test_patterns = ["tests/**/*.py"]

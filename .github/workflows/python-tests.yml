@@ -22,9 +22,9 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=py tests/
+          pytest --cov=py --cov-report=xml:tests/coverage.xml tests/
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          files: ./coverage.xml
+          files: ./tests/coverage.xml

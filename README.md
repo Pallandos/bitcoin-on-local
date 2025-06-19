@@ -78,6 +78,9 @@ This tool requires :
 
 [^1]: The tool may work on older versions but has not been tested on it. 
 
+> [!INFO]
+	> Project is beeing tester right now 
+
 All other dependencies will be installed with pip. See [requirements.txt](./requirements.txt).
 
 ### Install

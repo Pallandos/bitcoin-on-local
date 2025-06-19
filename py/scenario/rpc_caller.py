@@ -60,6 +60,9 @@ class BitcoinRPC:
                 
             return result.get('result', None)
             
+        except BitcoinRPCError:
+            # Re-raise the BitcoinRPCError to avoid the final except block
+            raise
         except requests.ConnectionError as e:
             raise requests.ConnectionError(f"Connection failed to {node}") from e
         except requests.Timeout as e:

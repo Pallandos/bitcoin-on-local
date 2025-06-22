@@ -21,9 +21,3 @@ def get_peer_info(node_name : str):
     except Exception as e:
         print(f"Error for {node_name}: {e}")
         return []
-    
-if __name__ == "__main__":
-    # tests
-    node_1 = "node_1"
-    info = get_peer_info(node_1)
-    print(info)

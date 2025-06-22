@@ -53,20 +53,27 @@ args.store_result = "ADDRESS2"
 wait_after = 4
 
 [steps.step6]
+name = "print balance"
+action = "cmd"
+node = "node_2"
+args.cmd = "getbalance"
+print = true
+
+[steps.step7]
 name = "send coins"
 action = "send_to"
 node = "node_1"
 args.amount = "10"
 args.to = "${ADDRESS2}"
 
-[steps.step7]
+[steps.step8]
 name = "mine to confirm"
 action = "mine"
 node = "node_1"
 args.amount = 1
 args.address = "${ADDRESS1}"
 
-[steps.step8]
+[steps.step9]
 name = "print balance"
 action = "cmd"
 node = "node_2"

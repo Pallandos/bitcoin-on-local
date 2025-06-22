@@ -1,6 +1,7 @@
 # this file generates a docker-compose.yml file based on the provided configuration
 
 import random
+import os
 
 from config import (
     NODE_NUMBER,
@@ -129,6 +130,9 @@ def export_data(all_ports: dict, node_names: list, output_dir: str = 'data'):
         node_names (list): List of node names.
         output_dir (str): Subdirectory of /docker to store the .env files. Defaults to 'data'.
     """
+    
+    # ensure the output directory exists
+    os.makedirs(f"docker/{output_dir}", exist_ok=True)
     
     # export node names :
     output_file_names = f"docker/{output_dir}/.env.node_names"

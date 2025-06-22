@@ -17,6 +17,7 @@
 		- [Scenario runner](#scenario-runner)
 		- [Network visualization](#network-visualization)
 		- [Logging](#logging)
+	- [Tests](#tests)
 
 
 ***Bitcoin-on-local*** is a small tool for creating and managing a fully customizable Bitcoin network on your machine. It comes with a modified Bitcoin CLI, logging features, network visualization, and a means to run precise, automated, and directive scenarios. 
@@ -74,12 +75,7 @@ Usage: ./bitcoin-on-local.sh start|stop|renew|draw|scenario|draw [output_file]
 This tool requires :
 
 - Docker (compose v2)
-- Python (>= 3.11)[^1]
-
-[^1]: The tool has been tested on Python 3.11 and 3.12
-
-> [!NOTE]
-> Project is beeing tested right now 
+- Python (>= 3.11)
 
 All other dependencies will be installed with pip. See [requirements.txt](./requirements.txt).
 
@@ -244,3 +240,7 @@ Available categories are now :
 - net 
 - tx
 - mempool
+
+## Tests
+
+This tool has been tested with unit test for Python 3.11 and 3.12.

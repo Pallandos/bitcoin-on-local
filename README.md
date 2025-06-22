@@ -243,4 +243,4 @@ Available categories are now :
 
 ## Tests
 
-This tool has been tested with unit test for Python 3.11 and 3.12.
+This tool has been tested with unit tests for Python 3.11 and 3.12.

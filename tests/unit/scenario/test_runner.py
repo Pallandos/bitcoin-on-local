@@ -1,9 +1,6 @@
 from unittest.mock import Mock, patch
 
 import pytest
-from scenario.actions import ActionExecutor
-from scenario.loader import ScenarioLoader
-from scenario.rpc_caller import BitcoinRPC
 from scenario.runner import ScenarioNotLoadedError, ScenarioRunner, ScenarioRunnerError
 
 

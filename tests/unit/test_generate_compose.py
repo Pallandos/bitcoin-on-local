@@ -27,7 +27,7 @@ def test_compute_ports_basic():
 def test_generate_peers_deterministic(monkeypatch):
     # Patch random to make the test deterministic
     monkeypatch.setattr(random, "randint", lambda a, b: 1)
-    monkeypatch.setattr(random, "sample", lambda l, n: l[:n])
+    monkeypatch.setattr(random, "sample", lambda le, n: le[:n])
     names = ["n1", "n2", "n3"]
     peers = generate_compose.generate_peers(names, 2)
     for k, v in peers.items():
@@ -38,10 +38,10 @@ def test_generate_peers_deterministic(monkeypatch):
 def test_generate_peers_max_peers(monkeypatch):
     # If max_peers > available, should not exceed available
     monkeypatch.setattr(random, "randint", lambda a, b: b)
-    monkeypatch.setattr(random, "sample", lambda l, n: l[:n])
+    monkeypatch.setattr(random, "sample", lambda le, n: le[:n])
     names = ["a", "b", "c", "d"]
     peers = generate_compose.generate_peers(names, 10)
-    for k, v in peers.items():
+    for _, v in peers.items():
         assert len(v) == len(names) - 1
 
 def test_generate_command_addnode_and_logging(tmp_path, monkeypatch):
